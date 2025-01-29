@@ -43,15 +43,15 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 
 // MongoDB Connection for images
+// MongoDB Connection for images
 mongoose.connect('mongodb+srv://selvavinu2002:k5tsZGJq09Zgl4o3@googledrive.weqgy.mongodb.net/images?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected for images'))
   .catch(err => console.error('MongoDB connection error for images:', err));
 
 // MongoDB Connection for files
 const mongoURI = 'mongodb+srv://selvavinu2002:k5tsZGJq09Zgl4o3@googledrive.weqgy.mongodb.net/files?retryWrites=true&w=majority';
-const fileConn = mongoose.createConnection(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const fileConn = mongoose.createConnection(mongoURI, { useUnifiedTopology: true });
 
 let gfs;
 fileConn.once('open', () => {
