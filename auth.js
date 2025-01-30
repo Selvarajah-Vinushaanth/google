@@ -22,7 +22,7 @@ router.post('/signup', async (req, res) => {
 
   try {
     // Check if user already exists
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ success: false, message: 'User already exists' });
     }
@@ -43,19 +43,19 @@ router.post('/signup', async (req, res) => {
 
 // User login route
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    // Find the user by username
-    const user = await User.findOne({ username });
+    // Find the user by email
+    const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ success: false, message: 'Invalid username or password' });
+      return res.status(400).json({ success: false, message: 'Invalid email or password' });
     }
 
     // Check if the password is correct
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ success: false, message: 'Invalid username or password' });
+      return res.status(400).json({ success: false, message: 'Invalid email or password' });
     }
 
     // Generate a JWT token
