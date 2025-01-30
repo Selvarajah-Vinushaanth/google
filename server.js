@@ -37,13 +37,13 @@ const cloudinaryStorage = new CloudinaryStorage({
 
 const cloudinaryUpload = multer({ storage: cloudinaryStorage });
 
-mongoose.connect('mongodb://localhost:27017/filesDB', {
+mongoose.connect('mongodb+srv://selvavinu2002:k5tsZGJq09Zgl4o3@googledrive.weqgy.mongodb.net/filesDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-const fileConn = mongoose.createConnection('mongodb://localhost:27017/filesDB', {
+const fileConn = mongoose.createConnection('mongodb+srv://selvavinu2002:k5tsZGJq09Zgl4o3@googledrive.weqgy.mongodb.net/filesDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
